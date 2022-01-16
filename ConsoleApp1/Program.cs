@@ -20,15 +20,15 @@ namespace ConsoleApp1
 
             var program = new Program();
 
-            //await program.CreateDataVendors();
+            await program.CreateDataVendors();
 
-            //await program.CreateDataUsers();
+            await program.CreateDataUsers();
 
             for (int i = 0; i < 10; i++)
                 await program.CreateDataProducts();
 
-            //for (int i = 0; i < 10; i++)
-                //await program.CreateDataOrders();
+            for (int i = 0; i < 10; i++)
+                await program.CreateDataOrders();
         }
         [Benchmark(Description = "CreateDataVendors")]
         public async Task CreateDataVendors()
@@ -216,6 +216,9 @@ namespace ConsoleApp1
                 str.Add(temp);
             }
             productsIdsArray = str.ToArray();
+
+            foreach (var item in productsIdsArray)
+                Console.WriteLine(item);
 
             var status = new[] {"Canceled", "Pending payment", "Awaits delivery", "Delivered"};
             
